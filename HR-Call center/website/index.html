@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalentConnect Solutions - Premium HR & Call Center Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      const LUCIDE_CDN_URL =
+        "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/";
+    </script>
+    <style>
+      /* Simple smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Mobile Menu Transition */
+      .mobile-menu {
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      .mobile-menu.open {
+        max-height: 500px; /* Adjust height as needed based on menu items */
+        opacity: 1;
+      }
+      /* Scroll Animation Styles */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly lower */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform; /* Optimize animation */
+      }
+      .fade-in-section.visible {
+        opacity: 1;
+        transform: translateY(0); /* Move to original position */
+      }
+      /* Style for select dropdown arrow */
+      select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+      /* Add subtle transition to header elements */
+      header a,
+      header button {
+        transition: all 0.2s ease-in-out;
+      }
+      /* Add subtle transition to footer elements */
+      footer a {
+        transition: color 0.2s ease-in-out;
+      }
+    </style>
+    <script>
+      // Tailwind CSS Configuration
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                DEFAULT: "#0A3A7E", // Darker Blue
+                light: "#1E60AE", // Medium Blue
+                lighter: "#3B82F6", // Brighter Blue (Tailwind's blue-500)
+              },
+              secondary: {
+                DEFAULT: "#15632B", // Darker Green
+                light: "#22C55E", // Brighter Green (Tailwind's green-500)
+              },
+              accent: {
+                DEFAULT: "#F97316", // Brighter Orange (Tailwind's orange-500)
+              },
+              neutral: {
+                light: "#F9FAFB", // Very light gray (bg-gray-50)
+                DEFAULT: "#F3F4F6", // Light gray (bg-gray-100)
+                medium: "#6B7280", // Medium gray (text-gray-500)
+                dark: "#374151", // Dark gray (text-gray-700)
+                darker: "#1F2937", // Very dark gray (bg-gray-800)
+                lightest: "#FFFFFF", // White
+              },
+            },
+            boxShadow: {
+              "soft-lg":
+                "0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07)",
+              "soft-xl":
+                "0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08)",
+              // Add a slightly stronger shadow for header
+              "header-shadow":
+                "0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05)",
+            },
+            borderRadius: {
+              xl: "0.75rem", // 12px
+              "2xl": "1rem", // 16px
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-neutral-light text-neutral-dark antialiased">
+    <header
+      class="bg-white shadow-header-shadow sticky top-0 z-50 border-b border-neutral-DEFAULT/75"
+    >
+      <nav
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-5 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-xl sm:text-2xl font-extrabold text-primary hover:opacity-90 shrink-0"
+        >
+          TalentConnect<span class="text-secondary">Solutions</span>
+        </a>
+        <div
+          class="hidden md:flex space-x-6 lg:space-x-8 items-center ml-auto mr-6 lg:mr-8"
+        >
+          <a
+            href="#home"
+            class="text-neutral-medium hover:text-primary-light font-medium pb-1 border-b-2 border-transparent hover:border-primary-light/50"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="text-neutral-medium hover:text-primary-light font-medium pb-1 border-b-2 border-transparent hover:border-primary-light/50"
+            >About Us</a
+          >
+          <a
+            href="#services"
+            class="text-neutral-medium hover:text-primary-light font-medium pb-1 border-b-2 border-transparent hover:border-primary-light/50"
+            >Services</a
+          >
+        </div>
+        <a
+          href="#contact"
+          class="hidden md:inline-block bg-primary hover:bg-primary-light text-white font-semibold py-2 px-5 lg:py-2.5 lg:px-6 rounded-lg shadow-sm hover:shadow-md text-sm lg:text-base transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light"
+          >Contact Us</a
+        >
+        <button
+          id="menu-button"
+          class="md:hidden text-neutral-dark focus:outline-none p-2 -mr-2 rounded-md hover:bg-neutral-DEFAULT focus:ring-2 focus:ring-inset focus:ring-primary-light"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <img
+            id="menu-icon"
+            src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/menu.svg"
+            alt="Menu"
+            class="w-6 h-6"
+          />
+        </button>
+      </nav>
+      <div
+        id="mobile-menu"
+        class="mobile-menu md:hidden bg-white border-t border-neutral-DEFAULT shadow-lg"
+      >
+        <a
+          href="#home"
+          class="block py-3 px-6 text-neutral-dark hover:bg-neutral-DEFAULT hover:text-primary transition duration-200 font-medium"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="block py-3 px-6 text-neutral-dark hover:bg-neutral-DEFAULT hover:text-primary transition duration-200 font-medium"
+          >About Us</a
+        >
+        <a
+          href="#services"
+          class="block py-3 px-6 text-neutral-dark hover:bg-neutral-DEFAULT hover:text-primary transition duration-200 font-medium"
+          >Services</a
+        >
+        <a
+          href="#contact"
+          class="block py-3 px-6 text-neutral-dark hover:bg-neutral-DEFAULT hover:text-primary transition duration-200 font-medium"
+          >Contact Us</a
+        >
+      </div>
+    </header>
+    <main>
+      <section
+        id="home"
+        class="relative text-white pt-24 pb-32 md:pt-32 md:pb-40 overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-secondary opacity-90 z-0"
+        ></div>
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+        >
+          <h1
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-5 leading-tight tracking-tight"
+          >
+            Connecting Talent, Engaging Customers
+          </h1>
+          <p
+            class="text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-xs sm:max-w-md md:max-w-3xl mx-auto opacity-95 font-light"
+          >
+            Premium, integrated HR Recruitment and Call Center Solutions
+            meticulously designed for your business growth and operational
+            efficiency.
+          </p>
+          <a
+            href="#services"
+            class="bg-white text-primary hover:bg-neutral-DEFAULT font-bold py-2.5 px-6 sm:py-3 sm:px-8 md:px-10 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-base md:text-lg transform hover:scale-105 inline-block"
+          >
+            Discover Our Solutions
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="py-16 md:py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center"
+          >
+            <figure class="relative aspect-video">
+              <img
+                src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Our+Expertise"
+                alt="Abstract representation of connection and expertise"
+                class="rounded-2xl shadow-soft-xl w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"
+              />
+              <div
+                class="absolute -bottom-4 -left-4 w-16 h-16 md:w-24 md:h-24 bg-secondary rounded-full opacity-20 -z-10"
+                aria-hidden="true"
+              ></div>
+            </figure>
+            <div class="text-center md:text-left">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 md:mb-6"
+              >
+                About TalentConnect Solutions
+              </h2>
+              <p
+                class="text-neutral-medium mb-4 md:mb-5 leading-relaxed text-base md:text-lg"
+              >
+                We are a premier provider specializing in seamlessly integrated
+                Human Resources (HR) recruitment and comprehensive Call Center
+                solutions. Built upon collective expertise, we leverage deep
+                industry knowledge and resources to deliver bespoke strategies
+                tailored precisely to your unique business needs.
+              </p>
+              <p
+                class="text-neutral-medium mb-6 md:mb-8 leading-relaxed text-base md:text-lg"
+              >
+                Consider us a dedicated extension of your team, committed to
+                driving growth through exceptional talent acquisition and
+                unparalleled customer experiences, always upholding the
+                strictest confidentiality and delivering timely, impactful
+                results.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex items-center text-primary hover:text-primary-light font-semibold group"
+              >
+                Learn More & Get In Touch
+                <img
+                  src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/arrow-right.svg"
+                  alt=""
+                  class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        class="py-16 md:py-24 bg-neutral-DEFAULT fade-in-section"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-primary mb-10 md:mb-16"
+          >
+            Our Integrated Solutions Suite
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div
+              class="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-soft-lg hover:shadow-soft-xl transition-all duration-300 hover:scale-[1.02]"
+            >
+              <div class="flex items-center mb-4 md:mb-5">
+                <span
+                  class="flex-shrink-0 inline-flex items-center justify-center mr-3 md:mr-4 p-2 bg-secondary/10 rounded-full"
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/users.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-7 md:h-7 text-secondary"
+                    aria-hidden="true"
+                  />
+                </span>
+                <h3 class="text-xl sm:text-2xl font-semibold text-secondary">
+                  HR Recruitment Excellence
+                </h3>
+              </div>
+              <p class="text-neutral-medium mb-5 md:mb-6 text-sm sm:text-base">
+                Streamline your talent acquisition pipeline with our strategic
+                and efficient recruitment services.
+              </p>
+              <ul
+                class="space-y-2 sm:space-y-3 text-neutral-dark text-sm sm:text-base"
+              >
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-secondary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Strategic Talent Sourcing & Acquisition</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-secondary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Rigorous Candidate Screening & Vetting</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-secondary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Seamless Interview Coordination</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-secondary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Comprehensive Onboarding Support</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-secondary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Full Recruitment Process Outsourcing (RPO)</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-soft-lg hover:shadow-soft-xl transition-all duration-300 hover:scale-[1.02]"
+            >
+              <div class="flex items-center mb-4 md:mb-5">
+                <span
+                  class="flex-shrink-0 inline-flex items-center justify-center mr-3 md:mr-4 p-2 bg-primary/10 rounded-full"
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/headphones.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-7 md:h-7 text-primary"
+                    aria-hidden="true"
+                  />
+                </span>
+                <h3 class="text-xl sm:text-2xl font-semibold text-primary">
+                  Advanced Call Center Solutions
+                </h3>
+              </div>
+              <p class="text-neutral-medium mb-5 md:mb-6 text-sm sm:text-base">
+                Elevate your customer engagement and operational efficiency with
+                our robust call center support.
+              </p>
+              <ul
+                class="space-y-2 sm:space-y-3 text-neutral-dark text-sm sm:text-base"
+              >
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Expert Inbound & Outbound Call Handling</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>24/7 Multichannel Customer Service</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Intelligent Appointment Scheduling</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Accurate Data Entry & Documentation</span>
+                </li>
+                <li class="flex items-start">
+                  <img
+                    src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3 mt-1 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>Proactive Quality Assurance & Training</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-24 bg-white fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-primary mb-10 md:mb-16"
+          >
+            The TalentConnect Advantage
+          </h2>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 text-center"
+          >
+            <div
+              class="p-6 md:p-8 border border-neutral-DEFAULT/50 rounded-2xl hover:bg-neutral-light transition duration-300 hover:shadow-md"
+            >
+              <span
+                class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-5 bg-accent/10 rounded-full"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/zap.svg"
+                  alt=""
+                  class="w-8 h-8 md:w-10 md:h-10 text-accent"
+                  aria-hidden="true"
+                />
+              </span>
+              <h3
+                class="text-lg sm:text-xl font-semibold mb-2 md:mb-3 text-neutral-darker"
+              >
+                Unmatched Expertise
+              </h3>
+              <p
+                class="text-neutral-medium leading-relaxed text-sm sm:text-base"
+              >
+                Leverage our deep industry knowledge for accelerated, superior
+                results in recruitment and customer service.
+              </p>
+            </div>
+            <div
+              class="p-6 md:p-8 border border-neutral-DEFAULT/50 rounded-2xl hover:bg-neutral-light transition duration-300 hover:shadow-md"
+            >
+              <span
+                class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-5 bg-accent/10 rounded-full"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/target.svg"
+                  alt=""
+                  class="w-8 h-8 md:w-10 md:h-10 text-accent"
+                  aria-hidden="true"
+                />
+              </span>
+              <h3
+                class="text-lg sm:text-xl font-semibold mb-2 md:mb-3 text-neutral-darker"
+              >
+                Perfectly Tailored Solutions
+              </h3>
+              <p
+                class="text-neutral-medium leading-relaxed text-sm sm:text-base"
+              >
+                We meticulously customize our services to align perfectly with
+                your unique business objectives.
+              </p>
+            </div>
+            <div
+              class="p-6 md:p-8 border border-neutral-DEFAULT/50 rounded-2xl hover:bg-neutral-light transition duration-300 hover:shadow-md"
+            >
+              <span
+                class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-5 bg-accent/10 rounded-full"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield-check.svg"
+                  alt=""
+                  class="w-8 h-8 md:w-10 md:h-10 text-accent"
+                  aria-hidden="true"
+                />
+              </span>
+              <h3
+                class="text-lg sm:text-xl font-semibold mb-2 md:mb-3 text-neutral-darker"
+              >
+                Steadfast Reliability
+              </h3>
+              <p
+                class="text-neutral-medium leading-relaxed text-sm sm:text-base"
+              >
+                Depend on our unwavering commitment to confidentiality,
+                transparency, and consistently delivering excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="py-16 md:py-24 bg-gradient-to-br from-primary via-primary-light to-secondary"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="bg-white rounded-2xl shadow-soft-xl p-6 sm:p-8 md:p-12 lg:p-16 max-w-4xl mx-auto fade-in-section"
+          >
+            <h2
+              class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-primary mb-4 md:mb-6"
+            >
+              Ready to Elevate Your Business?
+            </h2>
+            <p
+              class="text-center text-neutral-medium mb-8 md:mb-12 max-w-2xl mx-auto text-base md:text-lg leading-relaxed"
+            >
+              Optimize your recruitment and customer engagement strategies.
+              Contact us today to explore how TalentConnect Solutions can become
+              your trusted partner for growth.
+            </p>
+            <form id="contact-form" class="space-y-5 md:space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-neutral-dark mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-light focus:border-transparent transition duration-150 ease-in-out placeholder-neutral-medium/70"
+                    placeholder="Your Full Name"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-neutral-dark mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-light focus:border-transparent transition duration-150 ease-in-out placeholder-neutral-medium/70"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                <div>
+                  <label
+                    for="company"
+                    class="block text-sm font-medium text-neutral-dark mb-1"
+                    >Company (Optional)</label
+                  >
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="w-full px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-light focus:border-transparent transition duration-150 ease-in-out placeholder-neutral-medium/70"
+                    placeholder="Your Company Name"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="service"
+                    class="block text-sm font-medium text-neutral-dark mb-1"
+                    >Service of Interest</label
+                  >
+                  <select
+                    id="service"
+                    name="service"
+                    class="w-full px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-light focus:border-transparent transition duration-150 ease-in-out bg-white text-sm sm:text-base text-neutral-dark"
+                  >
+                    <option value="" class="text-neutral-medium">
+                      Select a service...
+                    </option>
+                    <option value="hr">HR Recruitment Excellence</option>
+                    <option value="call_center">
+                      Advanced Call Center Solutions
+                    </option>
+                    <option value="both">Both HR & Call Center</option>
+                    <option value="other">General Inquiry</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-neutral-dark mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-light focus:border-transparent transition duration-150 ease-in-out placeholder-neutral-medium/70"
+                  placeholder="Tell us how we can help you..."
+                ></textarea>
+              </div>
+              <div class="text-center pt-2 md:pt-4">
+                <button
+                  type="submit"
+                  class="bg-primary hover:bg-primary-light text-white font-bold py-3 px-8 sm:py-3.5 sm:px-10 md:px-12 rounded-lg transition duration-300 shadow-md hover:shadow-lg text-base md:text-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+            <div id="form-status" class="mt-6 text-center"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="bg-neutral-darker text-neutral-light/90 py-12 md:py-16 border-t-4 border-primary"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-center text-center md:text-left"
+        >
+          <div class="md:col-span-1">
+            <a
+              href="#home"
+              class="inline-block text-xl sm:text-2xl font-extrabold text-white hover:opacity-90"
+            >
+              TalentConnect<span class="text-secondary-light">Solutions</span>
+            </a>
+            <p class="mt-3 text-sm text-neutral-light/70">
+              Connecting Talent, Engaging Customers.
+            </p>
+          </div>
+          <div
+            class="md:col-span-1 flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-5 md:space-x-6 text-base"
+          >
+            <a href="#about" class="hover:text-secondary-light font-medium"
+              >About</a
+            >
+            <a href="#services" class="hover:text-secondary-light font-medium"
+              >Services</a
+            >
+            <a href="#contact" class="hover:text-secondary-light font-medium"
+              >Contact</a
+            >
+            <a href="#" class="hover:text-secondary-light font-medium"
+              >Privacy</a
+            >
+          </div>
+          <div class="md:col-span-1 text-center md:text-right">
+            <p class="text-sm text-neutral-light/70">
+              &copy; <span id="currentYear"></span> TalentConnect Solutions.
+              <br class="sm:hidden" />
+              All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // --- DOM Ready Execution ---
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Set current year in footer ---
+        const currentYearElement = document.getElementById("currentYear");
+        if (currentYearElement) {
+          currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById("menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon"); // Get the icon img tag
+        // Ensure iconBaseUrl uses the correct CDN path set in the head
+        const iconBaseUrl =
+          typeof LUCIDE_CDN_URL !== "undefined"
+            ? LUCIDE_CDN_URL
+            : "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/";
+
+        if (menuButton && mobileMenu && menuIcon) {
+          menuButton.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.toggle("open");
+            menuButton.setAttribute("aria-expanded", isOpen);
+
+            // Toggle icon between menu and close (x)
+            if (isOpen) {
+              menuIcon.src = iconBaseUrl + "x.svg";
+              menuIcon.alt = "Close menu";
+            } else {
+              menuIcon.src = iconBaseUrl + "menu.svg";
+              menuIcon.alt = "Open menu";
+            }
+          });
+
+          // Close menu when a link inside it is clicked
+          const mobileLinks = mobileMenu.querySelectorAll("a");
+          mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              mobileMenu.classList.remove("open");
+              menuButton.setAttribute("aria-expanded", "false");
+              menuIcon.src = iconBaseUrl + "menu.svg"; // Reset to menu icon
+              menuIcon.alt = "Open menu";
+            });
+          });
+        } else {
+          console.error("Mobile menu elements not found.");
+        }
+
+        // --- Intersection Observer for Fade-in Animation ---
+        const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
+
+        if ("IntersectionObserver" in window) {
+          const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: "0px",
+            threshold: 0.1, // trigger animation when 10% of the element is visible
+          };
+
+          const observerCallback = (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                // Optional: Stop observing the element after it becomes visible to prevent re-animation
+                // observer.unobserve(entry.target);
+              }
+              // Optional: If you want elements to fade out when scrolling up, uncomment below
+              // else {
+              //   entry.target.classList.remove('visible');
+              // }
+            });
+          };
+
+          const observer = new IntersectionObserver(
+            observerCallback,
+            observerOptions
+          );
+
+          sectionsToAnimate.forEach((section) => {
+            observer.observe(section);
+          });
+        } else {
+          // Fallback for browsers that don't support IntersectionObserver
+          // Make all sections visible immediately
+          console.warn(
+            "IntersectionObserver not supported. Animations disabled."
+          );
+          sectionsToAnimate.forEach((section) => {
+            section.classList.add("visible");
+          });
+        }
+
+        // --- Basic Contact Form Handling (Example) ---
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+
+        if (contactForm && formStatus) {
+          contactForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Basic validation example (can be expanded)
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+
+            // Simple check if elements exist before accessing value
+            if (!nameInput || !emailInput || !messageInput) {
+              formStatus.textContent =
+                "Form elements not found. Please refresh.";
+              formStatus.className = "mt-6 text-center text-red-600";
+              console.error("Form input elements missing.");
+              return;
+            }
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (!name || !email || !message) {
+              formStatus.textContent = "Please fill in all required fields.";
+              formStatus.className = "mt-6 text-center text-red-600";
+              return;
+            }
+
+            // Simulate form submission (replace with actual AJAX call)
+            formStatus.textContent = "Sending message...";
+            formStatus.className = "mt-6 text-center text-neutral-medium";
+
+            setTimeout(() => {
+              // Simulate success
+              formStatus.textContent = "Thank you! Your message has been sent.";
+              formStatus.className = "mt-6 text-center text-green-600";
+              contactForm.reset(); // Clear the form
+
+              // Optionally clear the message after a few seconds
+              // setTimeout(() => { formStatus.textContent = ''; }, 5000);
+            }, 1500); // Simulate network delay
+
+            // In a real application, you would use fetch() or XMLHttpRequest
+            // to send the form data to a server-side script here.
+            /*
+            const formData = new FormData(contactForm);
+            fetch('/your-server-endpoint', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                 if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                 }
+                 return response.json(); // or response.text()
+             })
+            .then(data => {
+                console.log('Success:', data);
+                formStatus.textContent = 'Thank you! Your message has been sent.';
+                formStatus.className = 'mt-6 text-center text-green-600';
+                contactForm.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                formStatus.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                formStatus.className = 'mt-6 text-center text-red-600';
+            });
+            */
+          });
+        } else {
+          console.error("Contact form or status element not found.");
+        }
+      });
+    </script>
+  </body>
+</html>
